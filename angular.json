@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-udemy": {
+    "angular_udemy": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-udemy",
+            "outputPath": "dist/angular_udemy",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-udemy:build"
+            "browserTarget": "angular_udemy:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-udemy:build:production"
+              "browserTarget": "angular_udemy:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-udemy:build"
+            "browserTarget": "angular_udemy:build"
           }
         },
         "test": {
@@ -111,15 +111,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-udemy:serve"
+            "devServerTarget": "angular_udemy:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-udemy:serve:production"
+              "devServerTarget": "angular_udemy:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "angular-udemy"
+  "defaultProject": "angular_udemy"
 }
