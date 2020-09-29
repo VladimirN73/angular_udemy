@@ -1,11 +1,14 @@
-<app-header></app-header>
+<app-header (featureSelected)="onFeatureSelected($event)"></app-header>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            
-            <app-recipes></app-recipes>
+            <!--
+            <button class="btn btn-primary" (click)="name='r'">Recipies</button>
+            <button class="btn btn-danger" (click)="name='s'">Shopping List</button>
+            -->
+            <app-recipes *ngIf="name=='r'"></app-recipes>
 
-            <app-shopping-list></app-shopping-list>
+            <app-shopping-list *ngIf="name=='s'"></app-shopping-list>
             
         </div>
     </div>

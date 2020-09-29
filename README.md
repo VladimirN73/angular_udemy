@@ -8,6 +8,7 @@ ng generate component servers
 ng g component ShoppingList/shoppingListEdit --> created ShoppingList/shopping-list-edit
 
 # history
+29.09.09 start section 6
 24.09.20 start section 3
 23.09.20 ng generate component servers
 22.09.20 install bootstrap: npm install --save bootstrap@3
