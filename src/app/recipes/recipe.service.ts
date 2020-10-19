@@ -10,6 +10,7 @@ export class RecipeService{
 
     private recipes: Recipe[] = [
         new Recipe(
+            1,
             "First Test",
             "simple test","https://cdn.pixabay.com/photo/2016/06/15/19/09/food-1459693_1280.jpg",
             [
@@ -18,12 +19,13 @@ export class RecipeService{
             ]
         ),
         new Recipe(
-            "Second Test",
+            2,
+            "Wiener Schnitzel",
             "simple test",
-            "https://cdn.pixabay.com/photo/2016/06/15/19/09/food-1459693_1280.jpg",
+            "https://cdn.pixabay.com/photo/2014/05/28/12/20/wiener-schnitzel-356436_1280.jpg",
             [
-                new Ingredient("Potato", 5),
-                new Ingredient("Ananas", 5)
+                new Ingredient("Fleisch", 5),
+                new Ingredient("Pommes", 5)
             ]
         )
     ];
@@ -31,6 +33,16 @@ export class RecipeService{
     getRecipies()
     {
         return this.recipes.slice(); // return a copy
+    }
+
+    getRecipe(id:number)
+    {
+        const item = this.recipes.find(
+            (s) => {
+              return s.id === id;
+            }
+          );
+          return item;
     }
 
 }
