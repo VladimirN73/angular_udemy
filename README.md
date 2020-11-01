@@ -11,6 +11,7 @@ ng g c recipes/recipe-start
 ng g c recipes/recipe-edit --skipTests=true
 
 # history
+01.11.20 start section 16
 19.10.20 start section 12 
 07.10.20 start section 8
 29.09.20 start section 6

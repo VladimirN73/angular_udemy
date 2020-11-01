@@ -24,6 +24,11 @@ export class ShoppingListService{
       this.listChanged.next(this.getList());
     }
 
+    addItemX(item:Ingredient){
+      this.list.push(item);
+      this.listChanged.next(this.getList());
+    }
+
     addItems(ingredients: Ingredient[]){
       this.list.push(...ingredients);
       this.listChanged.next(this.getList());
