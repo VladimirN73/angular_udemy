@@ -6,7 +6,9 @@
             <a 
                 class="list-group-item"
                 style="cursor: pointer"
-                *ngFor="let x of list">
+                *ngFor="let x of list"
+                (click)="onEditItem(x)"
+                >
                 {{x.name}} ({{x.amount}})
             </a>
         </ul>

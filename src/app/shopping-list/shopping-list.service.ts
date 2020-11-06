@@ -8,10 +8,11 @@ import { Ingredient } from '../shared/ingredient.model';
 export class ShoppingListService{
 
     listChanged = new Subject<Ingredient[]>();
+    startingEdit = new Subject<Ingredient>();
 
     private list: Ingredient[] = [
-        new Ingredient("Apples", 5),
-        new Ingredient("Tomatoes", 5)
+        new Ingredient(1, "Apples", 5),
+        new Ingredient(2, "Tomatoes", 5)
       ];
 
     getList()
@@ -19,8 +20,8 @@ export class ShoppingListService{
         return this.list.slice(); // return a copy
     }
 
-    addItem(name:string, count:number){
-      this.list.push(new Ingredient(name,count));
+    addItem(name:string, amount:number){
+      this.list.push(new Ingredient(this.list.length,name,amount));
       this.listChanged.next(this.getList());
     }
 
@@ -34,4 +35,9 @@ export class ShoppingListService{
       this.listChanged.next(this.getList());
     }
 
+    deleteItem(item:Ingredient){
+      const index: number = this.list.indexOf(item);
+      this.list.splice(index);
+      this.listChanged.next(this.getList());
+    }
 }
