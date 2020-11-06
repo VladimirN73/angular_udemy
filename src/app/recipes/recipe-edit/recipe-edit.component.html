@@ -1,1 +1,91 @@
-<p>recipe-edit works!</p>
+<div class="row" >
+    <div class="col-xs-12">
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+            <div class="row" >
+                <div class="col-xs-12">
+                    <button type="submit" class="btn btn-success" [disabled]="!myForm.valid">
+                        {{ editMode? 'Update' : 'Save' }}</button>
+                    <button type="button" class="btn btn-danger" (click)="onCancel()">
+                        Cancel</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="nameId">Name</label>
+                <input
+                    type="text"
+                    id="nameId"
+                    formControlName="xName"
+                    class="form-control">
+                <span 
+                    *ngIf="!myForm.get('xName').valid && myForm.get('xName').touched" 
+                    class="help-block">                    
+                    <span *ngIf="myForm.get('xName').errors['required']">Name is required</span>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="imageId">Image URL</label>
+                <input
+                    type="text"
+                    id="imageid"
+                    formControlName="xImageUrl"
+                    class="form-control"
+                    #imagePath>
+                <span 
+                    *ngIf="!myForm.get('xImageUrl').valid && myForm.get('xImageUrl').touched" 
+                    class="help-block">                    
+                    <span *ngIf="myForm.get('xImageUrl').errors['required']">Image URL is required</span>
+                </span>
+            </div>
+
+            <div class="form-group">
+                <img [src]="imagePath.value" class="image-responsive">
+            </div>
+
+            <div class="form-group">
+                <label for="descriptionId">Description</label>
+                <textarea
+                    id="descriptionId"
+                    formControlName="xDesc"
+                    class="form-control"
+                    rows="6">
+                </textarea>
+            </div>
+
+            <div formArrayName="xItems" >
+                <h3>Ingredients</h3>
+
+                <div 
+                    class="form-group"
+                    *ngFor="let item of getControls(); let i = index">
+
+                    <div class="row" [formGroupName]="i">
+                        <div class="col-xs-12">
+                            <div class="row" >
+                                <div class="col-xs-8">
+                                    <input type="text" class="form-control" formControlName="name">
+                                </div>
+                                <div class="col-xs-2">
+                                    <input type="number" class="form-control" formControlName="amount">
+                                </div>
+                                <div class="col-xs-2">  
+                                    <button 
+                                        type="button" 
+                                        class="btn btn-danger"
+                                        (click)="onDeleteIngredient(i)">X</button>                              
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+                
+                <hr>
+                <button 
+                    type="button" 
+                    class="btn btn-primary"
+                    (click)="onAddIngredient()">Add an ingredient
+                </button>
+            </div>
+        </form>
+    </div>
+</div>    

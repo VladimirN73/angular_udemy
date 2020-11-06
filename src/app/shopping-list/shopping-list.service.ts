@@ -21,7 +21,7 @@ export class ShoppingListService{
     }
 
     addItem(name:string, amount:number){
-      this.list.push(new Ingredient(this.list.length,name,amount));
+      this.list.push(new Ingredient(this.list.length+1,name,amount));
       this.listChanged.next(this.getList());
     }
 
