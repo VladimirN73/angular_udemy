@@ -11,27 +11,42 @@ export class RecipeService{
     recipeSelected = new Subject<Recipe>(); 
     listChanged = new Subject<Recipe[]>();
 
-    private list: Recipe[] = [
-        new Recipe(
-            1,
-            "First Test",
-            "simple test","https://cdn.pixabay.com/photo/2016/06/15/19/09/food-1459693_1280.jpg",
-            [
-                Ingredient.newItem("Apples", 1),
-                Ingredient.newItem("Tomatoes", 2)
-            ]
-        ),
-        new Recipe(
-            2,
-            "Wiener Schnitzel",
-            "simple test",
-            "https://cdn.pixabay.com/photo/2014/05/28/12/20/wiener-schnitzel-356436_1280.jpg",
-            [
-                Ingredient.newItem("Fleisch", 3),
-                Ingredient.newItem("Pommes", 4)
-            ]
-        )
-    ];
+    private list: Recipe[] = [];
+
+    constructor(){
+        //this.setDefaultRecipes();
+        
+    }
+
+    setDefaultRecipes(){
+        this.list = [
+            new Recipe(
+                1,
+                "First Test",
+                "simple test","https://cdn.pixabay.com/photo/2016/06/15/19/09/food-1459693_1280.jpg",
+                [
+                    Ingredient.newItem("Apples", 1),
+                    Ingredient.newItem("Tomatoes", 2)
+                ]
+            ),
+            new Recipe(
+                2,
+                "Wiener Schnitzel",
+                "simple test",
+                "https://cdn.pixabay.com/photo/2014/05/28/12/20/wiener-schnitzel-356436_1280.jpg",
+                [
+                    Ingredient.newItem("Fleisch", 3),
+                    Ingredient.newItem("Pommes", 4)
+                ]
+            )
+        ];
+    }
+
+    setRecipes(recipes:Recipe[])
+    {
+        this.list = recipes;
+        this.listChanged.next(this.getRecipies());
+    }
 
     getRecipies()
     {
