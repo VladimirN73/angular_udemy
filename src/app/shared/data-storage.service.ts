@@ -1,7 +1,8 @@
 import { HttpClient, HttpEventType, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject, throwError } from 'rxjs';
-import { map, catchError, tap } from 'rxjs/operators'
+import { pipe, Subject, throwError } from 'rxjs';
+import { map, catchError, tap, take } from 'rxjs/operators'
+import { AuthService } from '../auth/auth.service';
 import { Recipe } from '../recipes/recipe.model';
 
 import { RecipeService} from '../recipes/recipe.service';
@@ -15,7 +16,8 @@ export class DataStorageService {
 
     constructor(
         private http:HttpClient,
-        private recipeService: RecipeService){
+        private recipeService: RecipeService,
+        private auth: AuthService){
         
     }
 
@@ -33,24 +35,6 @@ export class DataStorageService {
           }, error=>{
               this.error.next(error.message);
           });
-    }
-
-    public fetchRecipesOld() 
-    {
-        return this.http
-            .get<Recipe[]>(this.myapi + 'recipes.json')
-            .pipe(map(recipes=>{
-                return recipes.map(recipe=>{
-                    if (!recipe.ingredients){
-                        recipe.ingredients = [];
-                    }
-                    return recipe;
-                })
-            }))
-            .subscribe(response => {
-                console.log(response);
-                this.recipeService.setRecipes(response);
-            });
     }
 
     public fetchRecipes() 
