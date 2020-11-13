@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SafeResourceUrl } from '@angular/platform-browser';
 import { AuthService } from './auth/auth.service';
 
 @Component({
