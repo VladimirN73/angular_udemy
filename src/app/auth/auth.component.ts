@@ -1,29 +1,42 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { stringify } from '@angular/compiler/src/util';
-import { Component, OnInit, ɵSWITCH_COMPILE_NGMODULE__POST_R3__ } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnDestroy, OnInit, ViewChild, ɵSWITCH_COMPILE_NGMODULE__POST_R3__ } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { AuthResponseData, AuthService} from '../auth/auth.service';
+import { AlertComponent} from '../shared/alert/alert.component';
+import { PlaceholderDirective } from '../shared/placeholder/placeholder.directive';
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css']
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent implements OnInit, OnDestroy {
+  @ViewChild(PlaceholderDirective,{static:false}) alertHost: PlaceholderDirective;
 
   isLoggingMode: boolean = true;
   isWaiting:boolean = false;
   error:string = null;
 
+  private closeSub:Subscription =null;
+
   constructor(
     private authService: AuthService,
-    private router: Router) { }
+    private router: Router,
+    private componentfactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit(): void {
   }
+
+  ngOnDestroy(): void {
+    if (this.closeSub){
+      this.closeSub.unsubscribe();
+    }
+  }
+
 
   onSwitchMode()
   {
@@ -61,8 +74,32 @@ export class AuthComponent implements OnInit {
       errorMessage => {
         this.error = errorMessage;      
         this.isWaiting = false;
+        this.showErrorAlert(errorMessage); // show alert programmatically
       }
     );
+  }
+
+  onHandleError(){
+    this.error = null;
+  }
+
+  // create alert programmatically
+  private showErrorAlert(message: string){
+    const factory = this.componentfactoryResolver.resolveComponentFactory(AlertComponent);
+
+    const view = this.alertHost.viewContainerRef;
+
+    view.clear();
+
+    const component = view.createComponent(factory).instance;
+
+    component.message=message;
+
+    this.closeSub = component.close.subscribe(() => {
+      this.closeSub.unsubscribe();
+      view.clear();
+    })
+    
   }
 
 }

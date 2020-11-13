@@ -11,6 +11,9 @@ ng g c recipes/recipe-start
 ng g c recipes/recipe-edit --skipTests=true
 
 # history
+13.11.20 start section 21
+  ng g c shared/alert --skipTests=true
+  ng g d shared/placeholder
 12.11.20
   ng g c shared/loadingSpinner --skipTests=true
 11.11.20 start section 20
