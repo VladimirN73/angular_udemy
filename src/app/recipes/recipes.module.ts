@@ -9,6 +9,7 @@ import { RecipeItemComponent } from '../recipes/recipe-item/recipe-item.componen
 import { RecipeDetailsComponent } from '../recipes/recipe-details/recipe-details.component';
 import { RecipeStartComponent } from '../recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from '../recipes/recipe-edit/recipe-edit.component';
+import { RecipesRoutingModule } from './recipes-routing.module';
 
 @NgModule({
     declarations: [ 
@@ -23,16 +24,11 @@ import { RecipeEditComponent } from '../recipes/recipe-edit/recipe-edit.componen
         RouterModule,
         CommonModule,
         ReactiveFormsModule,
+        RecipesRoutingModule,
     ],
     exports: [
-        RecipesComponent,
-        RecipeListComponent,
-        RecipeItemComponent,
-        RecipeDetailsComponent,
-        RecipeStartComponent,
-        RecipeEditComponent,
     ],
-        providers: [
+    providers: [
     ],
     bootstrap: []
   })
