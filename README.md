@@ -11,6 +11,8 @@ ng g c recipes/recipe-start
 ng g c recipes/recipe-edit --skipTests=true
 
 # history
+14.11.20
+  add recipes.module.ts
 13.11.20 start section 21
   ng g c shared/alert --skipTests=true
   ng g d shared/placeholder
