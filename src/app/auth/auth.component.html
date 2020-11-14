@@ -3,14 +3,6 @@
 
 <div class="row">
     <div class="col-xs-12 col-md-6 col-md-offset-3">
-        <!-- declarative alert area
-        <div class="alert alert-danger" *ngIf="error!=null">
-            <p>{{error}}</p>
-        </div>
-        -->
-        <!-- declarative alert pop-up
-        <app-alert [message]="error" *ngIf="error" (close)="onHandleError()"></app-alert>
-        -->
 
         <div *ngIf="isWaiting" style="text-align: center;">
             <app-loading-spinner></app-loading-spinner>
