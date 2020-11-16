@@ -1,10 +1,10 @@
-import { HttpClient, HttpErrorResponse, HttpEventType, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Subject, throwError } from 'rxjs';
-import { map, catchError, tap } from 'rxjs/operators'
+import { BehaviorSubject, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators'
 import { User} from './user.model';
-
+import { environment } from '../../environments/environment';
 export interface AuthResponseData{
     idToken:string;
     email:string;
@@ -21,7 +21,7 @@ export class AuthService {
 
     private tokenTimer: any;
  
-    private apikey="AIzaSyAxGRNOYL2z6w8UNgQAyapqr_KREFEiCCc";
+    private apikey = environment.API_KEY;
     private apiSignUp:string="https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" + this.apikey;
     private apiLogin :string="https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" + this.apikey;
 
