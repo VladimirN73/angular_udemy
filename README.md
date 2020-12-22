@@ -14,6 +14,7 @@ ng g c recipes/recipe-edit --skipTests=true
 22.12.20
   copied to angular_ngrx
   ng update @angular/core @angular/cli rxjs --allowDirty=true
+  ng update tslib  --allowDirty=true
 15.11.20
   npm install -g firebase-tools
 14.11.20
