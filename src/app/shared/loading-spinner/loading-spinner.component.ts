@@ -7,3 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoadingSpinnerComponent{
 }
+
+
+// https://loading.io/css/

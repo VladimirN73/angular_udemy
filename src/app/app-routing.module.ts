@@ -20,7 +20,7 @@ const appRoutes: Routes =[
   ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules})], // preloading
+    imports: [RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules, relativeLinkResolution: 'legacy' })], // preloading
     exports: [RouterModule]
 })
 export class AppRoutingModule

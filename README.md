@@ -11,8 +11,11 @@ ng g c recipes/recipe-start
 ng g c recipes/recipe-edit --skipTests=true
 
 # history
+22.12.20
+  copied to angular_ngrx
+  ng update @angular/core @angular/cli rxjs --allowDirty=true
 15.11.20
- npm install -g firebase-tools
+  npm install -g firebase-tools
 14.11.20
   add recipes.module.ts
 13.11.20 start section 21
